@@ -1,0 +1,23 @@
+{
+  "name": "upstart",
+  "version": "0.0.0",
+  "authors": [
+    "IamanimalXI <maximilian.moulettes@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.11",
+    "lesshat": "~2.0.15",
+    "angularjs": "*",
+    "knockout.js": "~3.0.0"
+  }
+}
