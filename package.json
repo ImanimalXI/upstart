@@ -1,0 +1,26 @@
+{
+    "name": "NAME",
+    "version": "0.0.1",
+    "description": "",
+    "homepage": "https://github.com/USER/NAME",
+    "keywords": [
+
+    ],
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "author": {
+        "name": "",
+        "email": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/USER/NAME.git"
+    },
+    "bugs": {
+        "url": "https://github.com/USER/NAME/issues"
+    },
+    "main": "index.js"
+}
