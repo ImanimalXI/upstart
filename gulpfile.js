@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     stripDebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     autoprefix = require('gulp-autoprefixer'),
+    ngAnnotate = require('gulp-ng-annotate'),
     minifyCSS = require('gulp-minify-css');
 
 //
@@ -95,6 +96,7 @@ gulp.task('scripts', function() {
     gulp.src(['./dev/js/*.js'])
         .pipe(concat('app.js'))
         .pipe(stripDebug())
+        .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('./app'));
 });
