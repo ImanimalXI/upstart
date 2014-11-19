@@ -13,19 +13,25 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     autoprefix = require('gulp-autoprefixer'),
     ngAnnotate = require('gulp-ng-annotate'),
+    please = require('gulp-pleeease'),
+    fixmyjs = require("gulp-fixmyjs"),
     minifyCSS = require('gulp-minify-css');
 
-//
+
 /**
- * JS hint task
+ * JS hint with Fixmy js task
  */
 gulp.task('jshint', function() {
     gulp.src('./dev/js/*.js')
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('default'))
+        .pipe(fixmyjs({
+            // JSHint settings here
+        }))
+        .pipe(gulp.dest("./src"));
 });
 
-//
+
 /**
  * minify new images
  */
@@ -59,6 +65,13 @@ gulp.task('styles', function() {
         //.pipe(autoprefix('last 2 versions'))
         .pipe(minifyCSS())
         .pipe(gulp.dest('./app/'));
+});
+
+// Please CSS post processing
+gulp.task('css', function () {
+    gulp.src(['./app/*.css'])
+        .pipe(please())
+        .pipe(gulp.dest('./app'));
 });
 
 gulp.task('styleguide', function(){
@@ -101,9 +114,9 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./app'));
 });
 
-gulp.task('default', ['less', 'imagemin', 'htmlpage', 'scripts', 'styles', 'styleguide']);
+gulp.task('default', ['jshint', 'less', 'css', 'imagemin', 'htmlpage', 'scripts', 'styles', 'styleguide']);
 
-gulp.task('dev', ['less', 'imagemin', 'htmlpage', 'scripts', 'styles', 'styleguide'], function() {
+gulp.task('dev', ['jshint', 'less', 'css', 'scripts', 'styles', 'styleguide'], function() {
     gulp.watch(['dev/js/**/*'], ['scripts']);
     gulp.watch(['./dev/less/**/*'], ['less','styleguide']);
 });
